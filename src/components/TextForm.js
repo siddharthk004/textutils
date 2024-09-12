@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 
 export default function TextForm(props) {
+    
 
      
     const HandleUpClick = () => {
@@ -25,11 +26,12 @@ export default function TextForm(props) {
         props.showAlert("Clear the Text ","success");
     }
 
-    const handleCopy = () => { 
+    const handleCopy = () =>  { 
         console.log("I am copy");
         var text = document.getElementById("MyBox");
         text.select();
         navigator.clipboard.writeText(text.value);
+        document.getSelection().removeAllRanges();
         props.showAlert("Copy ","success");
     }
 
@@ -56,17 +58,17 @@ export default function TextForm(props) {
         <textarea className="form-control" value={text} onChange={HandleOnchange} style = {{backgroundColor:-props.mode==='dark'?'grey':'white',
     color: props.mode ==='dark'?'black':'#163854'}} id="MyBox" rows="4"></textarea>
         </div>
-        <button className="btn btn-success mx-2" onClick={HandleUpClick}>Convert to Uppercase</button>
-        <button className="btn btn-success mx-2" onClick={HandleLoClick}>Convert to Lowercase</button>
-        <button className="btn btn-success mx-2" onClick={handleCopy}>copy Text</button>
-        <button className="btn btn-success mx-2" onClick={handleExtraSpaces}>Remove Extra Space</button>
-        <button className="btn btn-danger mx-2" onClick={HandleclearClick}>Clear Text</button>
+        <button className="btn btn-success mx-1 my-1" style={{border:'2px solid #bb0084'}} onClick={HandleUpClick}>Convert to Uppercase</button>
+        <button className="btn btn-success mx-1 my-1" style={{border:'2px solid #bb0084'}} onClick={HandleLoClick}>Convert to Lowercase</button>
+        <button className="btn btn-success mx-1 my-1"style={{border:'2px solid #bb0084'}} onClick={handleExtraSpaces}> Remove All Extra Spaces  </button>
+        <button className="btn btn-success mx-1 my-1" style={{border:'2px solid #bb0084'}} onClick={handleCopy}>copy Text</button>
+        <button className="btn btn-danger mx-1 my-1" style={{border:'2px solid #bb0084'}} onClick={HandleclearClick}>Clear Text</button>
     </div>
 
     <div className='container my-3' style={{color: props.mode==='dark'?'white':'#163854'}}>
         <h2>Your text summary</h2>
-        <p>{text.split(" ").length-1} words and {text.length} characters</p>
-        <p>{0.008 * text.split(" ").length}Minutes Read</p>
+        <p>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length } words and {text.length} characters</p>
+        <p>{0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length}Minutes Read</p> 
         <h2>Preview</h2>
         <p>{text.length >0?text:"Enter something to preview"}</p>
     </div>

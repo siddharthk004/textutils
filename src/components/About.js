@@ -1,41 +1,28 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-export default function About() {
+export default function About(props) {
+
+    let myStyle = {
+        color : props.mode === 'dark'?'white':'black',
+        backgroundColor: props.mode === 'dark'?'#254056':'white',
+        border:'1px solid'
+    }
+
+    let myStyleX = {
+        color : props.mode === 'dark'?'white':'black',
+        backgroundColor: props.mode === 'dark'?'#163854':'white'
+    }
     
-    const [myStyle, setmyStyle] = useState({
-        color:'black',
-        backgroundColor: 'white'
-    })
-
-    // const [btnText,setBtnText] = useState("Enable Dark Mode")
-
-    // const toggleSetOn = ()=> {
-    //     if(myStyle.color === 'black') {
-    //         setmyStyle({
-    //             color: 'white',
-    //             backgroundColor: 'black',
-    //             border: "0.5px solid white"
-    //         })
-    //         setBtnText("Enable Light Mode")
-    //     }
-    //     else {
-    //         setmyStyle({color: 'black',
-    //         backgroundColor: 'white'
-    //     })
-    //     setBtnText("Enable Dark mode")
-    //     }
-    // }
-
   return (
-    <div className="container" style={myStyle}>
+    <div className="container"  style={myStyleX}>
         <h3>About Us</h3>
         
         <div className="accordion" id="accordionExample">
             
-            <div className="accordion-item" style={myStyle}>
-                <h2 className="accordion-header" id='headingTwo'>
-                <button className="accordion-button collapsed" style={myStyle} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    Convert To UpperCase
+            <div className="accordion-item" >
+                <h2 className="accordion-header" id='headingOne'>
+                <button className="accordion-button collapsed"  type="button" style={myStyle} data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <strong>Convert To UpperCase</strong>
                 </button>
                 </h2>
                 <div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#accordionExample">
@@ -46,10 +33,10 @@ export default function About() {
             </div>
 
 
-            <div className="accordion-item" style={myStyle}>
+            <div className="accordion-item">
                 <h2 className="accordion-header" id='headingTwo'>
-                <button className="accordion-button collapsed" style={myStyle} type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Convert To LowerCase
+                <button className="accordion-button collapsed" type="button" style={myStyle} data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <strong>Convert To LowerCase</strong>
                 </button>
                 </h2>
                 <div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -59,10 +46,10 @@ export default function About() {
                 </div>
             </div>
 
-            <div className="accordion-item" style={myStyle}>
+            <div className="accordion-item">
                 <h2 className="accordion-header" id='headingThree'>
-                <button className="accordion-button collapsed" style={myStyle} type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    Remove Extra Spaces
+                <button className="accordion-button collapsed" type="button" style={myStyle} data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <strong>Remove Extra Spaces</strong>
                 </button>
                 </h2>
                 <div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -72,10 +59,10 @@ export default function About() {
                 </div>
             </div>
 
-            <div className="accordion-item" style={myStyle}>
+            <div className="accordion-item">
                 <h2 className="accordion-header" id='headingFour'>
-                <button className="accordion-button collapsed" style={myStyle} type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
-                    Copy Text
+                <button className="accordion-button collapsed" type="button" style={myStyle} data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                    <strong>Copy Text</strong>
                 </button>
                 </h2>
                 <div id="collapseFour" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -85,10 +72,10 @@ export default function About() {
                 </div>
             </div>
 
-            <div className="accordion-item" style={myStyle}>
+            <div className="accordion-item">
                 <h2 className="accordion-header" id='headingFive'>
-                <button className="accordion-button collapsed" style={myStyle} type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
-                    Clear Text
+                <button className="accordion-button collapsed" type="button" style={myStyle} data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
+                    <strong>Clear Text</strong>
                 </button>
                 </h2>
                 <div id="collapseFive" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -97,12 +84,7 @@ export default function About() {
                     </div>
                 </div>
             </div>
-
-
             </div>
-            {/* <div className="container my-3">
-            <button onClick={toggleSetOn} type="button" className="btn btn-danger" >{btnText}</button>
-        </div> */}
     </div>
   )
 }
